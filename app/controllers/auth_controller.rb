@@ -1,3 +1,4 @@
+require "jwt"
 class AuthController < ApplicationController
   def login
     user = User.find_by(email: params[:email])
