@@ -40,7 +40,7 @@ q4.options.create!(body: ".parse_int", correct: false)
 # Pergunta 5
 q5 = l1.questions.create!(body: "Como se inicia um comentário em Ruby?")
 q5.options.create!(body: "// Comentário", correct: false)
-q5.options.create!(body: ".", correct: false)
+q5.options.create!(body: "\\ Comentário", correct: false)
 q5.options.create!(body: "# Comentário", correct: true)
 
 
