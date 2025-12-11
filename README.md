@@ -89,7 +89,7 @@ Retorna uma lição específica com suas perguntas e opções.
 ## Frontend
 
 O frontend do projeto foi desenvolvido em Next.js.\
-Repositório: *adicione o link aqui*
+Repositório: *[Clique aqui!](https://github.com/caroline-medeiros/ruby_duo_web)*
 
 ------------------------------------------------------------------------
 
