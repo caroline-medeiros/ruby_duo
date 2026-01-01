@@ -1,19 +1,19 @@
 require "jwt"
 
 class JwtService
-  SECRET_KEY = Rails.application.secret_key_base
-  def self.encode(payload)
-    payload[:exp] = 24.hours.from_now.to_i
+  HMAC_SECRET = Rails.application.credentials.secret_key_base || "secret_key_base"
+  ALGORITHM = "HS256"
+  EXPIRATION = 24.hours
 
-    JWT.encode(payload, SECRET_KEY, "HS256")
+  def self.encode(payload)
+    payload[:exp] = EXPIRATION.from_now.to_i
+    JWT.encode(payload, HMAC_SECRET, ALGORITHM)
   end
 
   def self.decode(token)
-    begin
-      decoded = JWT.decode(token, SECRET_KEY, true, { algorithm: "HS256" })[0]
-      HashWithIndifferentAccess.new(decoded)
-    rescue
-      nil
-    end
+    body = JWT.decode(token, HMAC_SECRET, true, { algorithm: ALGORITHM })[0]
+    HashWithIndifferentAccess.new(body)
+  rescue JWT::DecodeError
+    nil
   end
 end
